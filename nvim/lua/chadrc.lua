@@ -12,4 +12,17 @@ M.ui = {
 	},
 }
 
+M.mason = {
+    pkgs = {
+        "lua-language-server",    -- Lua language server
+        "intelephense",           -- PHP language server
+        "prettier",               -- Prettier formatter
+        "php-cs-fixer",           -- PHP Code Formatter
+        "stylua",                 -- Lua formatter
+        "html-lsp",               -- HTML LSP
+        "css-lsp",                -- CSS LSP
+        -- Add more as needed...
+    }
+}
+
 return M

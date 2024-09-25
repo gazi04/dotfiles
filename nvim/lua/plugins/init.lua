@@ -9,16 +9,12 @@ return {
 
   {
     "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "lua-language-server", "stylua",
-        "html-lsp", "css-lsp", "prettier",
-      },
-    },
+    lazy = false,
   },
 
   {
     "nvim-treesitter/nvim-treesitter",
+    lazy = false;
     opts = {
       ensure_installed = {
         "vim", "lua", "vimdoc",
@@ -29,10 +25,20 @@ return {
 
   {
     "phpactor/phpactor",
+    lazy = false;
     run = "composer install --no-dev --optimize-autoloader",
   },
 
   { 'nicholasmata/nvim-dap-cs', lazy=false, dependencies = { 'mfussenegger/nvim-dap' } },
+
+  {
+    "L3MON4D3/LuaSnip",
+    lazy = false,
+    config = function()
+      require("luasnip.loaders.from_vscode").lazy_load()
+    end,
+  },
+
 
   -- {
   --   "mfussenegger/nvim-dap",

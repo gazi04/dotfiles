@@ -9,6 +9,7 @@ return {
 
   {
     "williamboman/mason.nvim",
+    lazy = false;
     opts = {
       ensure_installed = {
         "lua-language-server", "stylua",
@@ -19,6 +20,7 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter",
+    lazy = false,
     opts = {
       ensure_installed = {
         "vim", "lua", "vimdoc",

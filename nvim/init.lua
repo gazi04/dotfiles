@@ -59,6 +59,10 @@ require("lazy").setup({
       vim.keymap.set("n", "<Leader>do", dap.step_over, { desc = "Step Over"})
       vim.keymap.set("n", "<Leader>du", dap.step_out, { desc = "Step Out"})
       vim.keymap.set("n", "<Leader>db", dap.step_back, { desc = "Step Back"})
+
+      vim.keymap.set('n', '<leader>dq', function()
+        require('dapui').close()
+      end, { desc = "Close all DAP UI windows and buffers" })
     end,
   },
 
@@ -74,7 +78,7 @@ require("lazy").setup({
       dap.listeners.before.attach.dapui_config = function() dapui.open() end
       dap.listeners.before.launch.dapui_config = function() dapui.open() end
       dap.listeners.before.event_terminated.dapui_config = function() dapui.close() end
-     dap.listeners.before.event_exited.dapui_config = function() dapui.close() end
+      dap.listeners.before.event_exited.dapui_config = function() dapui.close() end
     end,
   },
 
@@ -154,6 +158,15 @@ local function setup_dat()
       port = 9003
     }
   }
+
+  dap.listeners.after.event_terminated["dapui_config"] = function()
+    require("dapui").close()
+  end
+
+  dap.listeners.after.event_exited["dapui_config"] = function()
+    require("dapui").close()
+  end
+
 
   dap.adapters.coreclr = {
     type = 'executable',

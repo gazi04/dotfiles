@@ -61,7 +61,8 @@ exec --no-startup-id dex --autostart --environment i3
 
 
 # Set the screen to lock after 10 minutes (600 seconds) of inactivity
-exec --no-startup-id xset s 600
+# 20 minutes (1200 seconds)
+exec --no-startup-id xset s 1200
 
 # Use xss-lock to lock the screen after inactivity
 exec --no-startup-id xss-lock -- betterlockscreen -l
@@ -86,14 +87,17 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
+# Opens flameshot screenshot utility
+bindsym $mod+shift+s exec --no-startup-id flameshot gui
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty
 
 # kill focused window
-bindsym $mod+q kill
+bindsym $mod+d kill
 
 # start rofi (a program launcher)
 #bindsym $mod+d exec --no-startup-id rofi -show drun
